@@ -8,5 +8,10 @@
 
 int main(void) {
 
+	Snake *mySnake = new Snake();
+
+
+
+	delete mySnake;
 	return 0;
 }

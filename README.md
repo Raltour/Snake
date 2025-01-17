@@ -31,37 +31,37 @@
 
 
 main函数伪代码：
-Init {
-    printBoard
-    Create new snake
-    Genetate new food
-    Score = 0
+int main(void) {
+    Init {
+        printBoard
+        Create new snake
+        Genetate new food
+        Score = 0
+    }
+    while {
+        if (getKey(检测输入) {
+            Change(snake.direction)
+        }
+        Snake.move
+        if (dead) {
+            Gameover
+            break
+        }
+        if（eat food) {
+            Length++
+            Generate new food
+        }
+        showBoard(刷新一帧）、
+        if (length > someNumber) {
+            accelerate
+        }
+        time.pause
+    }
+        delete snake
+        Show score
+        return 0
 }
 
-while {
-    if (getKey(检测输入) {
-        Change(snake.direction)
-    }
-    
-    Snake.move
-    if (dead) {
-        Gameover
-        break
-    }
-    if（eat food) {
-        Length++
-        Generate new food
-    }
-    showBoard(刷新一帧）、
-    
-    Speed ->{
-        Length > 20
-        Pause.time--
-    }   
-
-    pause
-}
-Show score
 
 
 

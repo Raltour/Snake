@@ -8,19 +8,15 @@
 #include "ui.h"
 #include <stdio.h>
 #include "Food.h"
+#include "Board.h"
 
 
 int main() {
 	//新建一条蛇
 	Snake* mySnake = new Snake();
 	//初始化界面设置
-	initgraph(X_LENGTH, Y_LENGTH + BLOCK_WIDTH);
-	setbkcolor(RGB(35, 206, 250));
-	cleardevice();//背景
-	setfillcolor(RGB(240, 255, 240));
-	setlinecolor(RGB(240, 255, 240));
-	setlinestyle(PS_DASH, 3);
-	fillrectangle(1, 1, X_SIZE * BLOCK_WIDTH, BLOCK_WIDTH);//计分区域
+	initGameBoard();
+
 
 	//进入游戏逻辑循环
 	while (true) {

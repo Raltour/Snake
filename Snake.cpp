@@ -15,23 +15,23 @@
 
 
 //在蛇的前端添加新的节点
-void addFirst(Snake snake) {
+void addFirst(Snake &snake) {
 
 }
 
 //去掉蛇末尾的节点
-void removeLast(Snake snake) {
+void removeLast(Snake &snake) {
 
 }
 
 //控制蛇向前移动的函数
 //将addFirst和removeLast结合起来用
-void snakeMove(Snake snake) {
+void snakeMove(Snake *snake) {
 
 }
 
 //检测蛇有没有死亡的函数
-bool isSnakeDead(Snake snake) {
+bool isSnakeDead(Snake *snake) {
 	return false;
 }
 

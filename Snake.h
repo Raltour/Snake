@@ -40,8 +40,8 @@ struct Snake {
 	}
 };
 
-void snakeMove(Snake snake);
+void snakeMove(Snake *snake);
 
-bool isSnakeDead(Snake snake);
+bool isSnakeDead(Snake *snake);
 
-void accelerateSnake(Snake* snake);
+void accelerateSnake(Snake *snake);

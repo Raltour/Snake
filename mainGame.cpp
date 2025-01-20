@@ -13,7 +13,6 @@
 int main() {
 
 	Snake* mySnake = new Snake();
-	delete mySnake;
 
 
 	initgraph(X_LENGTH, Y_LENGTH + BLOCK_WIDTH);
@@ -36,5 +35,6 @@ int main() {
 	char a = getchar();
 	closegraph();
 
+	delete mySnake;
 	return  0;
 }

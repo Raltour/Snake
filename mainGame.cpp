@@ -7,6 +7,7 @@
 #include "Snake.h"
 #include "ui.h"
 #include <stdio.h>
+#include "Food.h"
 
 
 int main() {

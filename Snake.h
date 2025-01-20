@@ -41,7 +41,7 @@ struct Snake {
 };
 
 void snakeMove(Snake *snake);
-
 bool isSnakeDead(Snake *snake);
-
 void accelerateSnake(Snake *snake);
+void snakeTurnLeft(Snake* snake);
+void snakeTurnRight(Snake* snake);

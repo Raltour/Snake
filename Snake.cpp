@@ -39,3 +39,13 @@ bool isSnakeDead(Snake *snake) {
 void accelerateSnake(Snake *snake) {
 	snake->speed++;
 }
+
+//让蛇左转的程序
+void snakeTurnLeft(Snake* snake) {
+
+}
+
+//让蛇右转的程序
+void snakeTurnRight(Snake* snake) {
+	
+}

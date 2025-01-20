@@ -5,7 +5,6 @@
 #include <easyx.h>
 #include "Block.h"
 #include "Snake.h"
-#include "ui.h"
 #include <stdio.h>
 #include "Food.h"
 #include "Board.h"

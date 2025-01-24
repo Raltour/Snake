@@ -1,6 +1,5 @@
 struct Food
 {
-
 	int xcoord;
 	int ycoord;
 

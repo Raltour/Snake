@@ -10,18 +10,19 @@
 #include <time.h>
 
 
-Food createFood(int x, int y) {
-	return Food(x, y);
+Food *createFood(int x, int y) {
+	return &Food(x, y);
 }
 
-////食物坐标
-//int foodX, foodY;
-//
-////生成食物
-//Food generateFood(Snake snake)
+
+
+////生成随机食物，不能与蛇的身体重叠
+//Food *generateFood(Snake snake)
 //{
 //	srand(time(0));//设置随机数种子
 //
+//	//食物坐标
+//	int foodX, foodY;
 //	while (true)
 //	{
 //		//随机生成食物坐标(保证食物不在墙壁上）
@@ -49,14 +50,4 @@ Food createFood(int x, int y) {
 //	}
 //
 //	return createFood(foodX, foodY);
-//}
-//
-////判断是否吃到食物
-//bool isFoodEaten()
-//{
-//	if (snakeHead->x == foodX && snakeHead->y == foodY)
-//	{
-//		return true;
-//	}
-//	return false;
 //}

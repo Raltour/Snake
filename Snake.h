@@ -45,3 +45,4 @@ bool isSnakeDead(Snake *snake);
 void accelerateSnake(Snake *snake);
 void snakeTurnLeft(Snake* snake);
 void snakeTurnRight(Snake* snake);
+bool isFoodEaten(Snake* snake, Food* food);

@@ -11,7 +11,7 @@
 
 #include "Snake.h"
 #include "Block.h"
-
+#include "Food.h"
 
 
 //在蛇的前端添加新的节点
@@ -88,4 +88,14 @@ void snakeTurnLeft(Snake* snake) {
 //让蛇右转的程序
 void snakeTurnRight(Snake* snake) {
 	
+}
+
+//检测蛇头有没有吃到食物（与食物坐标重叠）
+bool isFoodEaten(Snake* snake, Food* food)
+{
+    if (snake->head->x_axis == food->xcoord && snake->head->y_axis == food->ycoord)
+    {
+        return true;
+    }
+    return false;
 }

@@ -90,6 +90,10 @@ void snakeTurnRight(Snake* snake) {
 	
 }
 
+void changeDirection(Snake* snake, char key) {
+    //结合turnleft\turnright
+}
+
 //检测蛇头有没有吃到食物（与食物坐标重叠）
 bool isFoodEaten(Snake* snake, Food* food)
 {

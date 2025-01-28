@@ -12,3 +12,4 @@ struct Food
 
 #endif // FOOD_H
 
+Food* generateFood(Snake snake);

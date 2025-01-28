@@ -9,7 +9,7 @@
 #define ROUND 5//圆角矩形的圆角半径
 
 
-void initGameBoard() {
+void initBoard() {
 	initgraph(X_LENGTH, Y_LENGTH + BLOCK_WIDTH);
 	//颜色随便找的，可以调
 	setbkcolor(RGB(35, 206, 250));

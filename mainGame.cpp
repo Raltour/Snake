@@ -16,14 +16,29 @@ int main() {
 	//新建一条蛇
 	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
 	//初始化界面设置
-	initGameBoard();
+	initBoard();
+	//蛇的初始化设置、食物初始化设置以及打印一帧
+	Food* myFood = generateFood(mySnake);
+	refreshBoard(mySnake, myFood);//这里还没写完
 
-	test();
+	test();//仅供测试
 
-	////进入游戏逻辑循环
-	//while (true) {
-	//	
-	//}
+	//进入游戏逻辑循环
+	while (true) {
+		if (hasKeyInput()) {
+			changeDirection(mySnake, getKey());
+		}
+
+		snakeMove(mySnake);
+
+		if (isSnakeDead(mySnake)) {
+			break;
+		}
+
+		if (isFoodEaten(mySnake, myFood)) {
+
+		}
+	}
 
 	score(5);//计分函数
 	closegraph();

@@ -45,6 +45,7 @@ struct Snake {
 void snakeMove(Snake *snake);
 bool isSnakeDead(Snake *snake);
 void accelerateSnake(Snake *snake);
-void snakeTurnLeft(Snake* snake);
-void snakeTurnRight(Snake* snake);
+void changeDirection(Snake *snake, char key);
+void snakeTurnLeft(Snake* snake);//≤‚ ‘£¨“‘∫Û…æµÙ
+void snakeTurnRight(Snake* snake);//≤‚ ‘£¨“‘∫Û…æµÙ
 bool isFoodEaten(Snake* snake, Food* food);

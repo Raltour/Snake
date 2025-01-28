@@ -95,6 +95,7 @@ void changeDirection(Snake* snake, char key) {
 }
 
 //检测蛇头有没有吃到食物（与食物坐标重叠）
+//该函数被包含在了头文件Food.h中
 bool isFoodEaten(Snake* snake, Food* food)
 {
     if (snake->head->x_axis == food->xcoord && snake->head->y_axis == food->ycoord)

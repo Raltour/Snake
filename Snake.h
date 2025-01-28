@@ -8,8 +8,8 @@
 #define INITIAL_PLACE_X 10
 #define INITIAL_PLACE_Y 10
 
-#include "Food.h"
-
+#ifndef NODE_H
+#define NODE_H
 struct Node {
 	int x_axis;
 	int y_axis;
@@ -22,7 +22,10 @@ struct Node {
 	Node(int x, int y, Node* next)
 		: x_axis(x), y_axis(y), nextNode(next) {}
 };
+#endif
 
+#ifndef SNAKE_H
+#define SNAKE_H
 struct Snake {
 	Node* head;
 	Node* end;
@@ -41,6 +44,7 @@ struct Snake {
 		direction = 1;
 	}
 };
+#endif
 
 void snakeMove(Snake *snake);
 bool isSnakeDead(Snake *snake);
@@ -48,4 +52,3 @@ void accelerateSnake(Snake *snake);
 void changeDirection(Snake *snake, char key);
 void snakeTurnLeft(Snake* snake);//≤‚ ‘£¨“‘∫Û…æµÙ
 void snakeTurnRight(Snake* snake);//≤‚ ‘£¨“‘∫Û…æµÙ
-bool isFoodEaten(Snake* snake, Food* food);

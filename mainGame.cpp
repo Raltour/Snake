@@ -36,8 +36,11 @@ int main() {
 		}
 
 		if (isFoodEaten(mySnake, myFood)) {
-
+			//这里比较麻烦，以后再写,估计还得加几个辅助函数
 		}
+
+		refreshBoard(mySnake, myFood);
+		delay(0.5);
 	}
 
 	score(5);//计分函数
@@ -53,7 +56,7 @@ void test() {
 	//新建一条蛇
 	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
 	//初始化界面设置
-	initGameBoard();
+	initBoard();
 
 	delay(0.5);
 	//测试能否正常打印(其实后面这些函数删掉就行，全都迁移到board.cpp文件中)
@@ -105,5 +108,5 @@ void test() {
 	closegraph();
 	delay(0.5);
 
-	delete mySnake;
+	free(mySnake);
 }

@@ -1,6 +1,5 @@
 /*
 * 包含食物的定义、食物随机刷新的函数
-* 
 */
 
 #include "Block.h"
@@ -8,11 +7,6 @@
 #include "Snake.h"
 #include <stdlib.h>
 #include <time.h>
-
-
-Food *createFood(int x, int y) {
-	return &Food(x, y);
-}
 
 
 

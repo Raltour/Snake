@@ -8,6 +8,8 @@
 #define INITIAL_PLACE_X 10
 #define INITIAL_PLACE_Y 10
 
+#include "Food.h"
+
 struct Node {
 	int x_axis;
 	int y_axis;

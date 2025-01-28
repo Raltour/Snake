@@ -8,11 +8,12 @@
 #include <stdio.h>
 #include "Food.h"
 #include "Board.h"
+#include <malloc.h>
 
 
 int main() {
 	//新建一条蛇
-	Snake *mySnake = new Snake();
+	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
 	//初始化界面设置
 	initGameBoard();
 
@@ -27,7 +28,7 @@ int main() {
 		food(10, 10);
 
 		//测试新建食物
-		Food* myFood = new Food();
+		Food* myFood = (Food*)malloc(sizeof(Food));
 
 		//测试能否刷新界面
 		refreshBoard(mySnake, myFood);
@@ -47,7 +48,8 @@ int main() {
 		snakeMove(mySnake);
 		snakeMove(mySnake);
 		snakeMove(mySnake);
-
+		free(myFood);
+		break;
 	}
 
 	score(5);//计分函数

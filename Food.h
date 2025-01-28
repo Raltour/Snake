@@ -1,3 +1,6 @@
+#ifndef FOOD_H
+#define FOOD_H
+
 struct Food
 {
 	int xcoord;
@@ -7,6 +10,5 @@ struct Food
 	Food(int x, int y) : xcoord{ x }, ycoord{ y } {}
 };
 
-Food createFood();
-void drawFood(Food food);
+#endif // FOOD_H
 

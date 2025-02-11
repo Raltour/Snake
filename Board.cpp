@@ -13,13 +13,6 @@ void block(int xcoord, int ycoord) {
 	solidroundrect(xcoord * BLOCK_WIDTH + 1, (ycoord + 1) * BLOCK_WIDTH + 1, (xcoord + 1) * BLOCK_WIDTH, (ycoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
 }
 
-void food(int xcoord, int ycoord) {
-	setfillcolor(RGB(255, 20, 147));
-	setlinecolor(RGB(240, 255, 240));
-	setlinestyle(PS_DASH, 3);
-	fillroundrect(xcoord * BLOCK_WIDTH + 1, (ycoord + 1) * BLOCK_WIDTH + 1, (xcoord + 1) * BLOCK_WIDTH, (ycoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
-}
-
 void score(int xxxx) {
 	settextcolor(RGB(0, 0, 0));
 	settextstyle(20, 0, _T("Verdana"));
@@ -38,18 +31,23 @@ void initBoard() {
 	fillrectangle(1, 1, X_SIZE * BLOCK_WIDTH, BLOCK_WIDTH);//计分区域
 }
 
+//该函数传进来一个food结构体的指针，把它打印在界面上
 void drawFood(Food* food) {
-	food(food->xcoord, food->ycoord);
-	//该函数传进来一个food结构体的指针，把它打印在界面上
+	setfillcolor(RGB(255, 20, 147));
+	setlinecolor(RGB(240, 255, 240));
+	setlinestyle(PS_DASH, 3);
+	fillroundrect(food->xcoord * BLOCK_WIDTH + 1, (food->ycoord + 1) * BLOCK_WIDTH + 1, (food->xcoord + 1) * BLOCK_WIDTH, (food->xcoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
+
 }
 
+//该函数传进来一个snake结构体的指针，把它打印在界面上
 void drawSnake(Snake* snake) {
 	Node* current = snake->head->nextNode;
 	while (current) {
 		block(current->x_axis, current->x_axis);
 		current = current->nextNode;
 		}
-	//该函数传进来一个snake结构体的指针，把它打印在界面上
+
 }
 
 //main函数中调用该函数，游戏刷新新的一帧

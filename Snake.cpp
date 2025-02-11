@@ -1,11 +1,11 @@
 /*
-* ±¾ÎÄ¼þ°üº¬£º
-*snakeµÄ½á¹¹Ìå
-*ÉßÒÆ¶¯µÄº¯Êý
-*¼ì²âÓÐÃ»ÓÐËÀÍöµÄº¯Êý
-*µ÷ÕûÉßÒÆ¶¯ËÙ¶ÈµÄº¯Êý
-*³Ôµ½Ê³ÎïÑÓ³¤µÄº¯Êý
-* ¼¸¸ö¸¨Öúº¯Êý£¬×÷ÓÃÁ´±íÍ·²¿Ôö¼Ó½Úµã¡¢Á´±íÎ²²¿É¾³ý½Úµã
+* æœ¬æ–‡ä»¶åŒ…å«ï¼š
+*snakeçš„ç»“æž„ä½“
+*è›‡ç§»åŠ¨çš„å‡½æ•°
+*æ£€æµ‹æœ‰æ²¡æœ‰æ­»äº¡çš„å‡½æ•°
+*è°ƒæ•´è›‡ç§»åŠ¨é€Ÿåº¦çš„å‡½æ•°
+*åƒåˆ°é£Ÿç‰©å»¶é•¿çš„å‡½æ•°
+* å‡ ä¸ªè¾…åŠ©å‡½æ•°ï¼Œä½œç”¨é“¾è¡¨å¤´éƒ¨å¢žåŠ èŠ‚ç‚¹ã€é“¾è¡¨å°¾éƒ¨åˆ é™¤èŠ‚ç‚¹
 */
 
 #include "Snake.h"
@@ -13,24 +13,24 @@
 #include "Food.h"
 
 
-//ÔÚÉßµÄÇ°¶ËÌí¼ÓÐÂµÄ½Úµã
+//åœ¨è›‡çš„å‰ç«¯æ·»åŠ æ–°çš„èŠ‚ç‚¹
 void addFirst(Snake& snake) {
     int newX = snake.head->x_axis;
     int newY = snake.head->y_axis;
 
-    // ¸ù¾Ýµ±Ç°·½Ïò¾ö¶¨ÐÂ½ÚµãµÄÎ»ÖÃ
+    // æ ¹æ®å½“å‰æ–¹å‘å†³å®šæ–°èŠ‚ç‚¹çš„ä½ç½®
     switch (snake.direction) {
-    case 0: newY -= 1; break; // ÏòÉÏ
-    case 1: newX += 1; break; // ÏòÓÒ
-    case 2: newY += 1; break; // ÏòÏÂ
-    case 3: newX -= 1; break; // Ïò×ó
+    case 0: newY -= 1; break; // å‘ä¸Š
+    case 1: newX += 1; break; // å‘å³
+    case 2: newY += 1; break; // å‘ä¸‹
+    case 3: newX -= 1; break; // å‘å·¦
     }
 
     Node* newNode = new Node(newX, newY, snake.head);
     snake.head = newNode;
 }
 
-//È¥µôÉßÄ©Î²µÄ½Úµã
+//åŽ»æŽ‰è›‡æœ«å°¾çš„èŠ‚ç‚¹
 void removeLast(Snake& snake) {
     if (!snake.end) return;
 
@@ -46,22 +46,22 @@ void removeLast(Snake& snake) {
     snake.end->nextNode = nullptr;
 }
 
-//¿ØÖÆÉßÏòÇ°ÒÆ¶¯µÄº¯Êý
-//½«addFirstºÍremoveLast½áºÏÆðÀ´ÓÃ
+//æŽ§åˆ¶è›‡å‘å‰ç§»åŠ¨çš„å‡½æ•°
+//å°†addFirstå’ŒremoveLastç»“åˆèµ·æ¥ç”¨
 void snakeMove(Snake* snake) {
     addFirst(*snake);
     removeLast(*snake);
 }
 
-//¼ì²âÉßÓÐÃ»ÓÐËÀÍöµÄº¯Êý
+//æ£€æµ‹è›‡æœ‰æ²¡æœ‰æ­»äº¡çš„å‡½æ•°
 bool isSnakeDead(Snake* snake) {
-    // ¼ì²âÉßÍ·ÊÇ·ñ×²Ç½
+    // æ£€æµ‹è›‡å¤´æ˜¯å¦æ’žå¢™
     if (snake->head->x_axis < 0 || snake->head->x_axis > 30 ||
         snake->head->y_axis < 0 || snake->head->y_axis > 30) {
         return true;
     }
 
-    // ¼ì²âÉßÍ·ÊÇ·ñ×²µ½×Ô¼º
+    // æ£€æµ‹è›‡å¤´æ˜¯å¦æ’žåˆ°è‡ªå·±
     Node* current = snake->head->nextNode;
     while (current) {
         if (current->x_axis == snake->head->x_axis &&
@@ -74,27 +74,71 @@ bool isSnakeDead(Snake* snake) {
     return false;
 }
 
-//ÈÃÉß¼ÓËÙµÄ³ÌÐò
+//è®©è›‡åŠ é€Ÿçš„ç¨‹åº
 void accelerateSnake(Snake *snake) {
 	snake->speed++;
 }
 
-//ÈÃÉß×ó×ªµÄ³ÌÐò
-void snakeTurnLeft(Snake* snake) {
+//è®©è›‡å·¦è½¬çš„ç¨‹åº
+void snakeTurnLeft() {
+    int newX = mySnake->head->x_axis;
+    int newY = mySnake->head->y_axis;
 
+    // æ ¹æ®å½“å‰æ–¹å‘å†³å®šæ–°èŠ‚ç‚¹çš„ä½ç½®
+    switch (mySnake->direction) {
+    case 0: newX -= 1; break; //å‘ä¸Šæ—¶å·¦è½¬ï¼Œä»¥ä¸‹åŒç†
+    case 1: newY -= 1; break; // å‘å³
+    case 2: newX += 1; break; // å‘ä¸‹
+    case 3: newY += 1; break; // å‘å·¦
+    }
+
+    Node* newNode = new Node(newX, newY, mySnake->head);
+    mySnake->head = newNode;
+    mySnake->direction = (mySnake->direction + 3) % 4;
 }
 
-//ÈÃÉßÓÒ×ªµÄ³ÌÐò
-void snakeTurnRight(Snake* snake) {
-	
+
+//è®©è›‡å³è½¬çš„ç¨‹åº
+void snakeTurnRight() {
+    int newX = mySnake->head->x_axis;
+    int newY = mySnake->head->y_axis;
+
+    // æ ¹æ®å½“å‰æ–¹å‘å†³å®šæ–°èŠ‚ç‚¹çš„ä½ç½®
+    switch (mySnake->direction) {
+    case 0: newX += 1; break; //å‘ä¸Šæ—¶å³è½¬ï¼Œä»¥ä¸‹åŒç†
+    case 1: newY += 1; break; // å‘å³
+    case 2: newX -= 1; break; // å‘ä¸‹
+    case 3: newY -= 1; break; // å‘å·¦
+    }
+
+    Node* newNode = new Node(newX, newY, mySnake->head);
+    mySnake->head = newNode;
+    mySnake->direction = (mySnake->direction + 1) % 4;
 }
 
-void changeDirection(Snake* snake, char key) {
-    //½áºÏturnleft\turnright
+//#define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0)
+//include<windows.h>
+void changeDirection(char key) {//æ²¡æƒ³æ˜Žç™½å‡½æ•°çš„è¾“å…¥æ€Žä¹ˆå†™
+    int newdirection;
+    if ï¼ˆï¼KEY_DOWNï¼ˆ87ï¼‰ï¼‰
+        newdirection = 0;
+    else if (ï¼KEY_DOWNï¼ˆ68)
+        newdirection = 1;
+    else if (ï¼KEY_DOWNï¼ˆ83)
+        newdirection = 2;
+    else if (ï¼KEY_DOWNï¼ˆ65)
+        newdirection = 3;
+
+    if (mySnake->direction == (newdirection + 1) % 4)
+        snakeTurnLeft();
+    else if (mySnake->direction == (newdirection + 3) % 4)
+        snakeTurnRight();
+
+    //ç»“åˆturnleft\turnright
 }
 
-//¼ì²âÉßÍ·ÓÐÃ»ÓÐ³Ôµ½Ê³Îï£¨ÓëÊ³Îï×ø±êÖØµþ£©
-//¸Ãº¯Êý±»°üº¬ÔÚÁËÍ·ÎÄ¼þFood.hÖÐ
+//æ£€æµ‹è›‡å¤´æœ‰æ²¡æœ‰åƒåˆ°é£Ÿç‰©ï¼ˆä¸Žé£Ÿç‰©åæ ‡é‡å ï¼‰
+//è¯¥å‡½æ•°è¢«åŒ…å«åœ¨äº†å¤´æ–‡ä»¶Food.hä¸­
 bool isFoodEaten(Snake* snake, Food* food)
 {
     if (snake->head->x_axis == food->xcoord && snake->head->y_axis == food->ycoord)

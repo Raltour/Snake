@@ -2,6 +2,7 @@ Snake/
 x64/
 cmake-build-debug/
 .idea/
+EasyX/
 Snake.sln
 Snake.vcxproj
 Snake.vcxproj.filters
@@ -10,3 +11,4 @@ editor.xml
 modules.xml
 Snake.iml
 vcs.xml
+easyx.h

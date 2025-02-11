@@ -14,58 +14,58 @@
 
 
 //在蛇的前端添加新的节点
-void addFirst(Snake& snake) {
-    int newX = snake.head->x_axis;
-    int newY = snake.head->y_axis;
+void addFirst() {
+    int newX = mySnake->head->x_axis;
+    int newY = mySnake->head->y_axis;
 
     // 根据当前方向决定新节点的位置
-    switch (snake.direction) {
+    switch (mySnake->direction) {
     case 0: newY -= 1; break; // 向上
     case 1: newX += 1; break; // 向右
     case 2: newY += 1; break; // 向下
     case 3: newX -= 1; break; // 向左
     }
 
-    Node* newNode = new Node(newX, newY, snake.head);
-    snake.head = newNode;
+    Node* newNode = new Node(newX, newY, mySnake->head);
+    mySnake->head = newNode;
 }
 
 //去掉蛇末尾的节点
-void removeLast(Snake& snake) {
-    if (!snake.end) return;
+void removeLast() {
+    if (!mySnake->end) return;
 
-    snake.lastEnd = snake.end;
+    mySnake->lastEnd = mySnake->end;
 
-    Node* prev = snake.head;
+    Node* prev = mySnake->head;
     while (prev->nextNode && prev->nextNode != snake.end) {
         prev = prev->nextNode;
     }
 
-    delete snake.end;
-    snake.end = prev;
-    snake.end->nextNode = nullptr;
+    delete mySnake->end;
+    mySnake->end = prev;
+    mySnake->->nextNode = nullptr;
 }
 
 //控制蛇向前移动的函数
 //将addFirst和removeLast结合起来用
-void snakeMove(Snake* snake) {
-    addFirst(*snake);
-    removeLast(*snake);
+void snakeMove() {
+    addFirst();
+    removeLast();
 }
 
 //检测蛇有没有死亡的函数
-bool isSnakeDead(Snake* snake) {
+bool isSnakeDead() {
     // 检测蛇头是否撞墙
-    if (snake->head->x_axis < 0 || snake->head->x_axis > 30 ||
-        snake->head->y_axis < 0 || snake->head->y_axis > 30) {
+    if (mySnake->head->x_axis < 0 || mySnake->head->x_axis > 30 ||
+        mySnake->head->y_axis < 0 || mySnake->head->y_axis > 30) {
         return true;
     }
 
     // 检测蛇头是否撞到自己
-    Node* current = snake->head->nextNode;
+    Node* current = mySnake->head->nextNode;
     while (current) {
-        if (current->x_axis == snake->head->x_axis &&
-            current->y_axis == snake->head->y_axis) {
+        if (current->x_axis == mySnake->head->x_axis &&
+            current->y_axis == mySnake->head->y_axis) {
             return true;
         }
         current = current->nextNode;
@@ -75,29 +75,29 @@ bool isSnakeDead(Snake* snake) {
 }
 
 //让蛇加速的程序
-void accelerateSnake(Snake *snake) {
-	snake->speed++;
+void accelerateSnake() {
+    mySnake->speed++;
 }
 
 //让蛇左转的程序
-void snakeTurnLeft(Snake* snake) {
+void snakeTurnLeft() {
 
 }
 
 //让蛇右转的程序
-void snakeTurnRight(Snake* snake) {
+void snakeTurnRight() {
 	
 }
 
-void changeDirection(Snake* snake, char key) {
+void changeDirection(char key) {
     //结合turnleft\turnright
 }
 
 //检测蛇头有没有吃到食物（与食物坐标重叠）
 //该函数被包含在了头文件Food.h中
-bool isFoodEaten(Snake* snake, Food* food)
+bool isFoodEaten(Food* food)
 {
-    if (snake->head->x_axis == food->xcoord && snake->head->y_axis == food->ycoord)
+    if (mySnake->head->x_axis == food->xcoord && mySnake->head->y_axis == food->ycoord)
     {
         return true;
     }

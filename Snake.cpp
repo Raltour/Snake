@@ -28,12 +28,13 @@ void addFirst(Snake& snake) {
 
     Node* newNode = new Node(newX, newY, snake.head);
     snake.head = newNode;
-    snake.length++;
 }
 
 //去掉蛇末尾的节点
 void removeLast(Snake& snake) {
     if (!snake.end) return;
+
+    snake.lastEnd = snake.end;
 
     Node* prev = snake.head;
     while (prev->nextNode && prev->nextNode != snake.end) {
@@ -43,7 +44,6 @@ void removeLast(Snake& snake) {
     delete snake.end;
     snake.end = prev;
     snake.end->nextNode = nullptr;
-    snake.length--;
 }
 
 //控制蛇向前移动的函数

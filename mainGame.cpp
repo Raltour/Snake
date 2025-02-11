@@ -12,6 +12,9 @@
 #include "Time.h"
 void test();//以后删掉
 
+
+
+
 int main() {
 	//新建一条蛇
 	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
@@ -20,6 +23,7 @@ int main() {
 	//蛇的初始化设置、食物初始化设置以及打印一帧
 	Food* myFood = generateFood(mySnake);
 	refreshBoard(mySnake, myFood);//这里还没写完
+	int currentscore = 0;
 
 	test();//仅供测试
 
@@ -36,10 +40,12 @@ int main() {
 		}
 
 		if (isFoodEaten(mySnake, myFood)) {
-			//这里比较麻烦，以后再写,估计还得加几个辅助函数
+			mySnake->end->nextNode = mySnake->lastEnd;
+			mySnake->end = mySnake->lastEnd;
+			mySnake->length++;
 		}
 
-		refreshBoard(mySnake, myFood);
+		refreshBoard(mySnake, myFood, currentscore);
 		delay(0.5);
 	}
 

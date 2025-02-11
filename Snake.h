@@ -29,6 +29,7 @@ struct Node {
 struct Snake {
 	Node* head;
 	Node* end;
+	Node* lastEnd;
 
 	int length;
 	int speed;
@@ -38,6 +39,7 @@ struct Snake {
 	Snake() {
 		head = new Node(INITIAL_PLACE_X, INITIAL_PLACE_Y, nullptr);
 		end = new Node(INITIAL_PLACE_X - 1, INITIAL_PLACE_Y + 1, nullptr);
+		lastEnd = end;
 		head->nextNode = end;
 		length = INITIAL_LENGTH;
 		speed = INITIAL_SPEED;

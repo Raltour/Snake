@@ -1,6 +1,7 @@
 Snake/
 x64/
 cmake-build-debug/
+.idea/
 Snake.sln
 Snake.vcxproj
 Snake.vcxproj.filters

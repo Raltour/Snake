@@ -4,7 +4,7 @@ void score(int score);
 
 void initBoard();
 
-void refreshBoard(Snake* snake, Food* food);
+void refreshBoard(Snake* snake, Food* foodï¼ŒcurrentScore);
 
 bool hasKeyInput();
-char getKey();//ÓĞÊ±¼äÑĞ¾¿ÏÂÔõÃ´¸ãÕâ¸ö
+char getKey();//æœ‰æ—¶é—´ç ”ç©¶ä¸‹æ€ä¹ˆæè¿™ä¸ª

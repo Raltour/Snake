@@ -1,4 +1,4 @@
-//°Ñ³õÊ¼»¯±³¾°¡¢´òÓ¡½çÃæµÄº¯ÊıĞ´ÔÚÕâÀï
+//æŠŠåˆå§‹åŒ–èƒŒæ™¯ã€æ‰“å°ç•Œé¢çš„å‡½æ•°å†™åœ¨è¿™é‡Œ
 
 #include "Block.h"
 #include <easyx.h>
@@ -6,32 +6,39 @@
 #include "Snake.h"
 #include<string.h>
 #include<stdio.h>
-#define ROUND 5//Ô²½Ç¾ØĞÎµÄÔ²½Ç°ë¾¶
+#define ROUND 5//åœ†è§’çŸ©å½¢çš„åœ†è§’åŠå¾„
 
 
 void initBoard() {
 	initgraph(X_LENGTH, Y_LENGTH + BLOCK_WIDTH);
-	//ÑÕÉ«Ëæ±ãÕÒµÄ£¬¿ÉÒÔµ÷
+	//é¢œè‰²éšä¾¿æ‰¾çš„ï¼Œå¯ä»¥è°ƒ
 	setbkcolor(RGB(35, 206, 250));
-	cleardevice();//±³¾°
+	cleardevice();//èƒŒæ™¯
 	setfillcolor(RGB(240, 255, 240));
 	setlinecolor(RGB(240, 255, 240));
 	setlinestyle(PS_DASH, 3);
-	fillrectangle(1, 1, X_SIZE * BLOCK_WIDTH, BLOCK_WIDTH);//¼Æ·ÖÇøÓò
+	fillrectangle(1, 1, X_SIZE * BLOCK_WIDTH, BLOCK_WIDTH);//è®¡åˆ†åŒºåŸŸ
 }
 
 void drawFood(Food* food) {
-	//¸Ãº¯Êı´«½øÀ´Ò»¸öfood½á¹¹ÌåµÄÖ¸Õë£¬°ÑËü´òÓ¡ÔÚ½çÃæÉÏ
+	food(food->xcoord, food->ycoord);
+	//è¯¥å‡½æ•°ä¼ è¿›æ¥ä¸€ä¸ªfoodç»“æ„ä½“çš„æŒ‡é’ˆï¼ŒæŠŠå®ƒæ‰“å°åœ¨ç•Œé¢ä¸Š
 }
 
 void drawSnake(Snake* snake) {
-	//¸Ãº¯Êı´«½øÀ´Ò»¸ösnake½á¹¹ÌåµÄÖ¸Õë£¬°ÑËü´òÓ¡ÔÚ½çÃæÉÏ
+	Node* current = snake->head->nextNode;
+	while (current) {
+		block(current->x_axis, current->x_axis);
+		current = current->nextNode;
+		}
+	//è¯¥å‡½æ•°ä¼ è¿›æ¥ä¸€ä¸ªsnakeç»“æ„ä½“çš„æŒ‡é’ˆï¼ŒæŠŠå®ƒæ‰“å°åœ¨ç•Œé¢ä¸Š
 }
 
-//mainº¯ÊıÖĞµ÷ÓÃ¸Ãº¯Êı£¬ÓÎÏ·Ë¢ĞÂĞÂµÄÒ»Ö¡
-void refreshBoard(Snake* snake, Food* food) {
+//mainå‡½æ•°ä¸­è°ƒç”¨è¯¥å‡½æ•°ï¼Œæ¸¸æˆåˆ·æ–°æ–°çš„ä¸€å¸§
+void refreshBoard(Snake* snake, Food* food,currentScore) {
 	drawSnake(snake);
 	drawFood(food);
+	score(currentScore);
 }
 
 
@@ -47,7 +54,7 @@ void score(int xxxx) {
 	settextcolor(RGB(0, 0, 0));
 	settextstyle(20, 0, _T("Verdana"));
 	setbkcolor(RGB(240, 255, 240));
-	outtextxy(240, 1, _T("Score:%d", xxxx));//Õâ¸öµØ·½ÓĞµãÎÊÌâ£¬Ã»Ïë³öÀ´ÔõÃ´²åÈë±äÁ¿
+	outtextxy(240, 1, _T("Score:%d", xxxx));//è¿™ä¸ªåœ°æ–¹æœ‰ç‚¹é—®é¢˜ï¼Œæ²¡æƒ³å‡ºæ¥æ€ä¹ˆæ’å…¥å˜é‡
 }
 
 void block(int xcoord, int ycoord) {

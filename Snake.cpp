@@ -81,16 +81,67 @@ void accelerateSnake() {
 
 //让蛇左转的程序
 void snakeTurnLeft() {
+    int newX = mySnake->head->x_axis;
+    int newY = mySnake->head->y_axis;
 
+    // 根据当前方向决定新节点的位置
+    switch (mySnake->direction) {
+        case 0:
+            newX -= 1;
+            break; //向上时左转，以下同理
+        case 1:
+            newY -= 1;
+            break; // 向右
+        case 2:
+            newX += 1;
+            break; // 向下
+        case 3:
+            newY += 1;
+            break; // 向左
+    }
+
+    Node* newNode = new Node(newX, newY, mySnake->head);
+    mySnake->head = newNode;
+    mySnake->direction = (mySnake->direction + 3) % 4;
 }
 
 //让蛇右转的程序
 void snakeTurnRight() {
-	
+    int newX = mySnake->head->x_axis;
+    int newY = mySnake->head->y_axis;
+
+    // 根据当前方向决定新节点的位置
+    switch (mySnake->direction) {
+        case 0: newX += 1; break; //向上时右转，以下同理
+        case 1: newY += 1; break; // 向右
+        case 2: newX -= 1; break; // 向下
+        case 3: newY -= 1; break; // 向左
+    }
+
+    Node* newNode = new Node(newX, newY, mySnake->head);
+    mySnake->head = newNode;
+    mySnake->direction = (mySnake->direction + 1) % 4;
 }
 
+
+#define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0)
+#include<windows.h>
 void changeDirection(char key) {
-    //结合turnleft\turnright
+    int newdirection;
+
+    if (!KEY_DOWN(87))
+        newdirection = 0;
+    else if (!KEY_DOWN(68))
+        newdirection = 1;
+    else if (!KEY_DOWN(83))
+        newdirection = 2;
+    else if (!KEY_DOWN(65))
+        newdirection = 3;
+
+    if (mySnake->direction == (newdirection + 1) % 4)
+        snakeTurnLeft();
+    else if (mySnake->direction == (newdirection + 3) % 4)
+        snakeTurnRight();
 }
 
 //检测蛇头有没有吃到食物（与食物坐标重叠）

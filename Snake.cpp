@@ -37,13 +37,13 @@ void removeLast() {
     mySnake->lastEnd = mySnake->end;
 
     Node* prev = mySnake->head;
-    while (prev->nextNode && prev->nextNode != snake.end) {
+    while (prev->nextNode && prev->nextNode != mySnake->end) {
         prev = prev->nextNode;
     }
 
     delete mySnake->end;
     mySnake->end = prev;
-    mySnake->->nextNode = nullptr;
+    mySnake->end->nextNode = nullptr;
 }
 
 //控制蛇向前移动的函数

@@ -20,12 +20,13 @@ int main() {
 	//初始化界面设置
 	initBoard();
 
+    //初试分数为0
+    int currentscore = 0;
+
 	//食物初始化设置以及打印一帧
 	Food* myFood = generateFood(mySnake);
-	refreshBoard(mySnake, myFood);//这里还没写完
+	refreshBoard(mySnake, myFood, currentscore);//这里还没写完
 
-	//初试分数为0
-	int currentscore = 0;
 
 	test();//仅供测试
 
@@ -77,8 +78,10 @@ void test() {
 	//测试新建食物
 	Food* myFood = (Food*)malloc(sizeof(Food));
 
+    int currentscore = 0;
+
 	//测试能否刷新界面
-	refreshBoard(mySnake, myFood);
+	refreshBoard(mySnake, myFood, currentscore);
 	delay(0.5);
 
 	//测试蛇能否正常移动

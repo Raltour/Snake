@@ -12,17 +12,19 @@
 #include "Time.h"
 void test();//以后删掉
 
-
+//新建一条蛇,带外部链接的静态变量
+extern Snake *mySnake = new Snake();
 
 
 int main() {
-	//新建一条蛇
-	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
 	//初始化界面设置
 	initBoard();
-	//蛇的初始化设置、食物初始化设置以及打印一帧
+
+	//食物初始化设置以及打印一帧
 	Food* myFood = generateFood(mySnake);
 	refreshBoard(mySnake, myFood);//这里还没写完
+
+	//初试分数为0
 	int currentscore = 0;
 
 	test();//仅供测试
@@ -30,12 +32,12 @@ int main() {
 	//进入游戏逻辑循环
 	while (true) {
 		if (hasKeyInput()) {
-			changeDirection(mySnake, getKey());
+			changeDirection(getKey());
 		}
 
-		snakeMove(mySnake);
+		snakeMove();
 
-		if (isSnakeDead(mySnake)) {
+		if (isSnakeDead()) {
 			break;
 		}
 
@@ -52,7 +54,6 @@ int main() {
 	score(5);//计分函数
 	closegraph();
 
-	free(mySnake);
 	return  0;
 }
 
@@ -81,30 +82,30 @@ void test() {
 	delay(0.5);
 
 	//测试蛇能否正常移动
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
 
 	//测试蛇能否转弯
-	snakeTurnLeft(mySnake);
+	snakeTurnLeft();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
 
-	snakeTurnRight(mySnake);
+	snakeTurnRight();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
-	snakeMove(mySnake);
+	snakeMove();
 	delay(0.5);
 	free(myFood);
 	delay(0.5);
@@ -113,6 +114,4 @@ void test() {
 	delay(0.5);
 	closegraph();
 	delay(0.5);
-
-	free(mySnake);
 }

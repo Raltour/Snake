@@ -48,9 +48,10 @@ struct Snake {
 };
 #endif
 
-void snakeMove(Snake *snake);
-bool isSnakeDead(Snake *snake);
-void accelerateSnake(Snake *snake);
-void changeDirection(Snake *snake, char key);
-void snakeTurnLeft(Snake* snake);//≤‚ ‘£¨“‘∫Û…æµÙ
-void snakeTurnRight(Snake* snake);//≤‚ ‘£¨“‘∫Û…æµÙ
+extern Snake* mySnake;
+void snakeMove();
+bool isSnakeDead();
+void accelerateSnake();
+void changeDirection(char key);
+void snakeTurnLeft();//≤‚ ‘£¨“‘∫Û…æµÙ
+void snakeTurnRight();//≤‚ ‘£¨“‘∫Û…æµÙ

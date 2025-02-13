@@ -13,12 +13,6 @@ void block(int xcoord, int ycoord) {
 	solidroundrect(xcoord * BLOCK_WIDTH + 1, (ycoord + 1) * BLOCK_WIDTH + 1, (xcoord + 1) * BLOCK_WIDTH, (ycoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
 }
 
-void score(int xxxx) {
-	settextcolor(RGB(0, 0, 0));
-	settextstyle(20, 0, _T("Verdana"));
-	setbkcolor(RGB(240, 255, 240));
-	outtextxy(240, 1, _T("Score:%d", xxxx));//这个地方有点问题，没想出来怎么插入变量
-}
 
 void initBoard() {
 	initgraph(X_LENGTH, Y_LENGTH + BLOCK_WIDTH);
@@ -51,10 +45,9 @@ void drawSnake(Snake* snake) {
 }
 
 //main函数中调用该函数，游戏刷新新的一帧
-void refreshBoard(Snake* snake, Food* food, int currentScore) {
+void refreshBoard(Snake* snake, Food* food) {
 	drawSnake(snake);
 	drawFood(food);
-	score(currentScore);
 }
 
 

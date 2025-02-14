@@ -1,5 +1,5 @@
 /*
-* ÓÎÏ·µÄÖ÷³ÌĞòÄ£¿é
+* æ¸¸æˆçš„ä¸»ç¨‹åºæ¨¡å—
 */
 
 #include <easyx.h>
@@ -9,27 +9,24 @@
 #include "Board.h"
 #include <malloc.h>
 #include "Time.h"
-void test();//ÒÔºóÉ¾µô
+void test();//ä»¥ååˆ æ‰
 
-//ĞÂ½¨Ò»ÌõÉß,´øÍâ²¿Á´½ÓµÄ¾²Ì¬±äÁ¿
+//æ–°å»ºä¸€æ¡è›‡,å¸¦å¤–éƒ¨é“¾æ¥çš„é™æ€å˜é‡
 extern Snake *mySnake = new Snake();
 
 
 int main() {
-	//³õÊ¼»¯½çÃæÉèÖÃ
+	//åˆå§‹åŒ–ç•Œé¢è®¾ç½®
 	initBoard();
 
-    //³õÊÔ·ÖÊıÎª0
-    int currentscore = 0;
-
-	//Ê³Îï³õÊ¼»¯ÉèÖÃÒÔ¼°´òÓ¡Ò»Ö¡
+	//é£Ÿç‰©åˆå§‹åŒ–è®¾ç½®ä»¥åŠæ‰“å°ä¸€å¸§
 	Food* myFood = generateFood(mySnake);
-	refreshBoard(mySnake, myFood);//ÕâÀï»¹Ã»Ğ´Íê
+	refreshBoard(mySnake, myFood);//è¿™é‡Œè¿˜æ²¡å†™å®Œ
 
 
-	test();//½ö¹©²âÊÔ
+	test();//ä»…ä¾›æµ‹è¯•
 
-	//½øÈëÓÎÏ·Âß¼­Ñ­»·
+	//è¿›å…¥æ¸¸æˆé€»è¾‘å¾ªç¯
 	while (true) {
         changeDirection();
 
@@ -55,31 +52,31 @@ int main() {
 }
 
 
-//²âÊÔ
+//æµ‹è¯•
 void test() {
-	//ĞÂ½¨Ò»ÌõÉß
+	//æ–°å»ºä¸€æ¡è›‡
 	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
-	//³õÊ¼»¯½çÃæÉèÖÃ
+	//åˆå§‹åŒ–ç•Œé¢è®¾ç½®
 	initBoard();
 
 	delay(0.5);
-	//²âÊÔÄÜ·ñÕı³£´òÓ¡(ÆäÊµºóÃæÕâĞ©º¯ÊıÉ¾µô¾ÍĞĞ£¬È«¶¼Ç¨ÒÆµ½board.cppÎÄ¼şÖĞ)
+	//æµ‹è¯•èƒ½å¦æ­£å¸¸æ‰“å°(å…¶å®åé¢è¿™äº›å‡½æ•°åˆ æ‰å°±è¡Œï¼Œå…¨éƒ½è¿ç§»åˆ°board.cppæ–‡ä»¶ä¸­)
 	block(0, 0);
 	delay(0.5);
-	block(0, 1);//»æÖÆÒ»½ÚÉßÉíµÄº¯Êı£¨x,y)  ·¶Î§0-29
+	block(0, 1);//ç»˜åˆ¶ä¸€èŠ‚è›‡èº«çš„å‡½æ•°ï¼ˆx,y)  èŒƒå›´0-29
 	delay(0.5);
 	delay(0.5);
 
-	//²âÊÔĞÂ½¨Ê³Îï
+	//æµ‹è¯•æ–°å»ºé£Ÿç‰©
 	Food* myFood = (Food*)malloc(sizeof(Food));
 
     int currentscore = 0;
 
-	//²âÊÔÄÜ·ñË¢ĞÂ½çÃæ
+	//æµ‹è¯•èƒ½å¦åˆ·æ–°ç•Œé¢
 	refreshBoard(mySnake, myFood);
 	delay(0.5);
 
-	//²âÊÔÉßÄÜ·ñÕı³£ÒÆ¶¯
+	//æµ‹è¯•è›‡èƒ½å¦æ­£å¸¸ç§»åŠ¨
 	snakeMove();
 	delay(0.5);
 	snakeMove();
@@ -87,7 +84,7 @@ void test() {
 	snakeMove();
 	delay(0.5);
 
-	//²âÊÔÉßÄÜ·ñ×ªÍä
+	//æµ‹è¯•è›‡èƒ½å¦è½¬å¼¯
 	snakeTurnLeft();
 	delay(0.5);
 	snakeMove();

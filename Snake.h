@@ -1,10 +1,10 @@
-//ÉßµÄ³õÊ¼³¤¶ÈÉè¶¨Îª2
+//è›‡çš„åˆå§‹é•¿åº¦è®¾å®šä¸º2
 #define INITIAL_LENGTH 2
-//ÉßµÄ³õÊ¼ËÙ¶È£¿ÎÒÒ²²»ÖªµÀÕâÀïÓÃ¶àÉÙ£¬Ëæ±ãÓÃÒ»¸öÊı×Ö
+//è›‡çš„åˆå§‹é€Ÿåº¦ï¼Ÿæˆ‘ä¹Ÿä¸çŸ¥é“è¿™é‡Œç”¨å¤šå°‘ï¼Œéšä¾¿ç”¨ä¸€ä¸ªæ•°å­—
 #define INITIAL_SPEED 10
-//ÉßµÄ³õÊ¼·½Ïò£¬Ö±½ÓÓÃ0¡¢1¡¢2¡¢3´ú±íËÄ¸ö·½Ïò
-#define INITIAL_DIRECTION 0
-//ÉßµÄ³õÊ¼Î»ÖÃ
+//è›‡çš„åˆå§‹æ–¹å‘ï¼Œç›´æ¥ç”¨0ã€1ã€2ã€3ä»£è¡¨å››ä¸ªæ–¹å‘
+#define INITIAL_DIRECTION 1
+//è›‡çš„åˆå§‹ä½ç½®
 #define INITIAL_PLACE_X 10
 #define INITIAL_PLACE_Y 10
 
@@ -15,10 +15,10 @@ struct Node {
 	int y_axis;
 	Node* nextNode;
 
-	//Ä¬ÈÏ¹¹Ôìº¯Êı
+	//é»˜è®¤æ„é€ å‡½æ•°
 	Node() : x_axis(0), y_axis(0), nextNode(nullptr) {}
 
-	//´ø²ÎÊıµÄ¹¹Ôìº¯Êı
+	//å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
 	Node(int x, int y, Node* next)
 		: x_axis(x), y_axis(y), nextNode(next) {}
 };
@@ -35,7 +35,7 @@ struct Snake {
 	int speed;
 	int direction;
 
-	//ĞÂ½¨Ò»¸öÉßÊ±²ÉÓÃµÄÄ¬ÈÏ¹¹Ôìº¯Êı
+	//æ–°å»ºä¸€ä¸ªè›‡æ—¶é‡‡ç”¨çš„é»˜è®¤æ„é€ å‡½æ•°
 	Snake() {
 		head = new Node(INITIAL_PLACE_X, INITIAL_PLACE_Y, nullptr);
 		end = new Node(INITIAL_PLACE_X - 1, INITIAL_PLACE_Y + 1, nullptr);
@@ -43,7 +43,7 @@ struct Snake {
 		head->nextNode = end;
 		length = INITIAL_LENGTH;
 		speed = INITIAL_SPEED;
-		direction = 1;
+		direction = INITIAL_DIRECTION;
 	}
 };
 #endif
@@ -53,5 +53,5 @@ void snakeMove();
 bool isSnakeDead();
 void accelerateSnake();
 void changeDirection();
-void snakeTurnLeft();//²âÊÔ£¬ÒÔºóÉ¾µô
-void snakeTurnRight();//²âÊÔ£¬ÒÔºóÉ¾µô
+void snakeTurnLeft();//æµ‹è¯•ï¼Œä»¥ååˆ æ‰
+void snakeTurnRight();//æµ‹è¯•ï¼Œä»¥ååˆ æ‰

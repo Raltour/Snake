@@ -1,7 +1,7 @@
 #include <time.h>
 
-// ×Ô¶¨ÒåµÄÒ»¸öÑÓÊ±º¯Êıdelay()
-void delay(int seconds) //  ²ÎÊı±ØĞëÎªÕûĞÍ£¬±íÊ¾ÑÓÊ±¶àÉÙÃë
+// è‡ªå®šä¹‰çš„ä¸€ä¸ªå»¶æ—¶å‡½æ•°delay()
+void delay(int seconds) //  å‚æ•°å¿…é¡»ä¸ºæ•´å‹ï¼Œè¡¨ç¤ºå»¶æ—¶å¤šå°‘ç§’
 {
     clock_t start = clock();
     clock_t lay = (clock_t)seconds * CLOCKS_PER_SEC;
@@ -9,7 +9,7 @@ void delay(int seconds) //  ²ÎÊı±ØĞëÎªÕûĞÍ£¬±íÊ¾ÑÓÊ±¶àÉÙÃë
 }
 
 
-void delay(double seconds) //  ²ÎÊıÎªË«¾«¶È¸¡µãĞÍ£¬ÖØÔØÒ»ÏÂ¡£
+void delay(double seconds) //  å‚æ•°ä¸ºåŒç²¾åº¦æµ®ç‚¹å‹ï¼Œé‡è½½ä¸€ä¸‹ã€‚
 {
     double start = clock();
     double lay = (double)seconds * CLOCKS_PER_SEC;

@@ -1,12 +1,12 @@
-//±¾Í·ÎÄ¼þ°üº¬ÁË±³¾°ÖÐµ¥Î»·½¿éµÄÐÅÏ¢
+//æœ¬å¤´æ–‡ä»¶åŒ…å«äº†èƒŒæ™¯ä¸­å•ä½æ–¹å—çš„ä¿¡æ¯
 
-//Ò»¸ö·½¿é±ßÔµµÄÏñËØµãÊýÁ¿
+//ä¸€ä¸ªæ–¹å—è¾¹ç¼˜çš„åƒç´ ç‚¹æ•°é‡
 #define BLOCK_WIDTH 20
 
 /*
-* ¶¨ÒåÕû¸öÓÎÏ·½çÃæµÄ´óÐ¡
-* SIZE±íÊ¾·½¿éµÄÊýÁ¿
-* LENGTH±íÊ¾Êµ¼ÊµÄÏñËØÊýÁ¿
+* å®šä¹‰æ•´ä¸ªæ¸¸æˆç•Œé¢çš„å¤§å°
+* SIZEè¡¨ç¤ºæ–¹å—çš„æ•°é‡
+* LENGTHè¡¨ç¤ºå®žé™…çš„åƒç´ æ•°é‡
 */
 #define X_SIZE 30
 #define X_LENGTH BLOCK_WIDTH * X_SIZE

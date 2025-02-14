@@ -4,8 +4,6 @@
 #include <easyx.h>
 #include "Food.h"
 #include "Snake.h"
-#include<string.h>
-#include<stdio.h>
 #define ROUND 5//圆角矩形的圆角半径
 
 void block(int xcoord, int ycoord) {

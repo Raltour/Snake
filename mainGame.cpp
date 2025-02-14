@@ -24,7 +24,7 @@ int main() {
 
 	//食物初始化设置以及打印一帧
 	Food* myFood = generateFood(mySnake);
-	refreshBoard(mySnake, myFood, currentscore);//这里还没写完
+	refreshBoard(mySnake, myFood);//这里还没写完
 
 
 	test();//仅供测试
@@ -47,11 +47,10 @@ int main() {
 			mySnake->length++;
 		}
 
-		refreshBoard(mySnake, myFood, currentscore);
+		refreshBoard(mySnake, myFood);
 		delay(0.5);
 	}
 
-	score(5);//计分函数
 	closegraph();
 
 	return  0;
@@ -80,7 +79,7 @@ void test() {
     int currentscore = 0;
 
 	//测试能否刷新界面
-	refreshBoard(mySnake, myFood, currentscore);
+	refreshBoard(mySnake, myFood);
 	delay(0.5);
 
 	//测试蛇能否正常移动
@@ -112,7 +111,6 @@ void test() {
 	free(myFood);
 	delay(0.5);
 
-	score(5);//计分函数
 	delay(0.5);
 	closegraph();
 	delay(0.5);

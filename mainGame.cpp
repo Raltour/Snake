@@ -31,9 +31,7 @@ int main() {
 
 	//进入游戏逻辑循环
 	while (true) {
-		if (hasKeyInput()) {
-			changeDirection(getKey());
-		}
+        changeDirection();
 
 		snakeMove();
 

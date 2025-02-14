@@ -126,7 +126,7 @@ void snakeTurnRight() {
 
 #define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0)
 #include<windows.h>
-void changeDirection(char key) {
+void changeDirection() {
     int newdirection;
 
     if (!KEY_DOWN(87))

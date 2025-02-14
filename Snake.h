@@ -52,6 +52,6 @@ extern Snake* mySnake;
 void snakeMove();
 bool isSnakeDead();
 void accelerateSnake();
-void changeDirection(char key);
+void changeDirection();
 void snakeTurnLeft();//≤‚ ‘£¨“‘∫Û…æµÙ
 void snakeTurnRight();//≤‚ ‘£¨“‘∫Û…æµÙ

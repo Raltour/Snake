@@ -14,4 +14,4 @@ struct Food
 
 #include "Snake.h"
 Food* generateFood(Snake *snake);
-bool isFoodEaten(Snake* snake, Food* food);
+bool isFoodEaten(Food* food);

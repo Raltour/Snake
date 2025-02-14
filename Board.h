@@ -2,7 +2,7 @@
 #define BOARD_H
 
 void block(int xcoord, int ycoord);
-void food(int xcoord, int ycoord);
+void drawFood(int xcoord, int ycoord);
 
 void initBoard();
 

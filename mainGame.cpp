@@ -41,7 +41,7 @@ int main() {
 			break;
 		}
 
-		if (isFoodEaten(mySnake, myFood)) {
+		if (isFoodEaten( myFood)) {
 			mySnake->end->nextNode = mySnake->lastEnd;
 			mySnake->end = mySnake->lastEnd;
 			mySnake->length++;
@@ -70,7 +70,6 @@ void test() {
 	delay(0.5);
 	block(0, 1);//绘制一节蛇身的函数（x,y)  范围0-29
 	delay(0.5);
-	food(10, 10);
 	delay(0.5);
 
 	//测试新建食物

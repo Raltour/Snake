@@ -19,7 +19,8 @@ struct Node {
 struct Snake {
 	Node* head;
 	Node* end;
-	Node* lastEnd;
+	int lastX;
+	int lastY;
 
 	int length;
 	int direction;
@@ -28,7 +29,8 @@ struct Snake {
 	Snake() {
 		end = new Node(10, 9, nullptr);
 		head = new Node(10, 10, end);
-		lastEnd = end;
+		lastX = 10;
+		lastY = 8;
 		head->nextNode = end;
 		length = 2;
 		direction = 2;

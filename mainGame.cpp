@@ -72,21 +72,37 @@ void test() {
 
 	//测试能否刷新界面
 	refreshBoard(myFood);
-	getchar();
 	puts("3");
-
-
-	//测试蛇能否正常移动            //以下代码有问题，在打印出4之前程序就结束了，但好像没有出现报错？不知道什么情况
-	snakeMove();
-	refreshBoard(myFood);
-	snakeMove();
-	delay(0.5);
-	refreshBoard(myFood);
-	snakeMove();
-	delay(0.5);
-	refreshBoard(myFood);
 	getchar();
+
+
+
+	//测试蛇能否正常移动
+	snakeMove();
+	delay(0.5);
+	refreshBoard(myFood);
 	puts("4");
+	getchar();
+
+	snakeMove();
+	delay(0.5);
+	refreshBoard(myFood);
+	puts("5");
+	getchar();
+
+	snakeMove();
+	delay(0.5);
+	refreshBoard(myFood);
+	puts("6");
+	getchar();
+
+	snakeMove();
+	delay(0.5);
+	refreshBoard(myFood);
+	puts("7");
+	getchar();
+
+
 
 
 	//测试蛇能否转弯
@@ -103,7 +119,7 @@ void test() {
 	delay(0.5);
 	refreshBoard(myFood);
 	getchar();
-	puts("5");
+	puts("6");
 
 
 	snakeTurnRight();
@@ -118,7 +134,7 @@ void test() {
 	delay(0.5);
 	refreshBoard(myFood);
 	getchar();
-	puts("6");
+	puts("7");
 
 
 
@@ -126,5 +142,5 @@ void test() {
 	closegraph();
 	delay(0.5);
 	getchar();
-	puts("7");
+	puts("8");
 }

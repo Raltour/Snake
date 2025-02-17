@@ -8,8 +8,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
-
 //生成随机食物，不能与蛇的身体重叠
 Food *generateFood()
 {

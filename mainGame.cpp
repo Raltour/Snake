@@ -19,7 +19,7 @@ int main() {
 
 	//食物初始化设置以及打印一帧
 	Food* myFood = generateFood();
-	refreshBoard(mySnake, myFood);//这里还没写完
+	refreshBoard(myFood);
 
 	// test();//仅供测试
 
@@ -41,7 +41,7 @@ int main() {
 			Food *myFood = generateFood();
 		}
 
-		refreshBoard(mySnake, myFood);
+		refreshBoard(myFood);
 		delay(0.5);
 	}
 
@@ -53,33 +53,28 @@ int main() {
 
 //测试
 void test() {
-	//新建一条蛇
-	Snake* mySnake = (Snake*)malloc(sizeof(Snake));
 	//初始化界面设置
 	initBoard();
-
 	delay(0.5);
+
 	//测试能否正常打印(其实后面这些函数删掉就行，全都迁移到board.cpp文件中)
 	block(0, 0);
-	delay(0.5);
 	block(0, 1);//绘制一节蛇身的函数（x,y)  范围0-29
-	delay(0.5);
-	delay(0.5);
 
 	//测试新建食物
 	Food* myFood = (Food*)malloc(sizeof(Food));
 
 	//测试能否刷新界面
-	refreshBoard(mySnake, myFood);
-	delay(0.5);
+	refreshBoard(myFood);
 
 	//测试蛇能否正常移动
 	snakeMove();
-	delay(0.5);
 	snakeMove();
 	delay(0.5);
 	snakeMove();
 	delay(0.5);
+	refreshBoard(myFood);
+
 
 	//测试蛇能否转弯
 	snakeTurnLeft();
@@ -90,6 +85,8 @@ void test() {
 	delay(0.5);
 	snakeMove();
 	delay(0.5);
+	refreshBoard(myFood);
+
 
 	snakeTurnRight();
 	delay(0.5);
@@ -101,6 +98,8 @@ void test() {
 	delay(0.5);
 	free(myFood);
 	delay(0.5);
+	refreshBoard(myFood);
+
 
 	delay(0.5);
 	closegraph();

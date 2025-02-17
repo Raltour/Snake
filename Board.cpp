@@ -20,7 +20,6 @@ void initBoard() {
 	setfillcolor(RGB(240, 255, 240));
 	setlinecolor(RGB(240, 255, 240));
 	setlinestyle(PS_DASH, 3);
-	fillrectangle(1, 1, X_SIZE * BLOCK_WIDTH, BLOCK_WIDTH);//计分区域
 }
 
 //该函数传进来一个food结构体的指针，把它打印在界面上
@@ -33,18 +32,18 @@ void drawFood(Food* food) {
 }
 
 //该函数传进来一个snake结构体的指针，把它打印在界面上
-void drawSnake(Snake* snake) {
-	Node* current = snake->head->nextNode;
-	while (current) {
+void drawSnake() {
+	Node* current = mySnake->head;
+	while (current->nextNode != NULL) {
 		block(current->x_axis, current->x_axis);
 		current = current->nextNode;
-		}
-
+	}
+	block(current->x_axis, current->x_axis);
 }
 
 //main函数中调用该函数，游戏刷新新的一帧
-void refreshBoard(Snake* snake, Food* food) {
-	drawSnake(snake);
+void refreshBoard(Food* food) {
+	drawSnake();
 	drawFood(food);
 }
 

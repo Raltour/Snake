@@ -3,11 +3,9 @@
 */
 
 #include <easyx.h>
-#include "Block.h"
 #include "Snake.h"
 #include "Food.h"
 #include "Board.h"
-#include <malloc.h>
 #include "Time.h"
 void test();//以后删掉
 
@@ -70,8 +68,6 @@ void test() {
 
 	//测试新建食物
 	Food* myFood = (Food*)malloc(sizeof(Food));
-
-    int currentscore = 0;
 
 	//测试能否刷新界面
 	refreshBoard(mySnake, myFood);

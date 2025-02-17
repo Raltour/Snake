@@ -1,7 +1,5 @@
 //蛇的初始长度设定为2
 #define INITIAL_LENGTH 2
-//蛇的初始速度？我也不知道这里用多少，随便用一个数字
-#define INITIAL_SPEED 10
 //蛇的初始方向，直接用0、1、2、3代表四个方向
 #define INITIAL_DIRECTION 1
 //蛇的初始位置
@@ -32,7 +30,6 @@ struct Snake {
 	Node* lastEnd;
 
 	int length;
-	int speed;
 	int direction;
 
 	//新建一个蛇时采用的默认构造函数
@@ -42,7 +39,6 @@ struct Snake {
 		lastEnd = end;
 		head->nextNode = end;
 		length = INITIAL_LENGTH;
-		speed = INITIAL_SPEED;
 		direction = INITIAL_DIRECTION;
 	}
 };
@@ -51,7 +47,6 @@ struct Snake {
 extern Snake* mySnake;
 void snakeMove();
 bool isSnakeDead();
-void accelerateSnake();
 void changeDirection();
 void snakeTurnLeft();//测试，以后删掉
 void snakeTurnRight();//测试，以后删掉

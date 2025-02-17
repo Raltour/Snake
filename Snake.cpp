@@ -74,11 +74,6 @@ bool isSnakeDead() {
     return false;
 }
 
-//让蛇加速的程序
-void accelerateSnake() {
-    mySnake->speed++;
-}
-
 //让蛇左转的程序
 void snakeTurnLeft() {
     int newX = mySnake->head->x_axis;

@@ -41,7 +41,7 @@ void drawSnake() {
 		block(current->x_axis, current->x_axis);
 		current = current->nextNode;
 	}
-	block(current->x_axis, current->x_axis);
+	block(current->x_axis, current->y_axis);
 }
 
 //main函数中调用该函数，游戏刷新新的一帧
@@ -49,9 +49,3 @@ void refreshBoard(Food* food) {
 	drawSnake();
 	drawFood(food);
 }
-
-
-
-
-
-

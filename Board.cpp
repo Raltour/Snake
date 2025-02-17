@@ -28,7 +28,6 @@ void drawFood(Food* food) {
 	setlinecolor(RGB(240, 255, 240));
 	setlinestyle(PS_DASH, 3);
 	fillroundrect(food->xcoord * BLOCK_WIDTH + 1, (food->ycoord + 1) * BLOCK_WIDTH + 1, (food->xcoord + 1) * BLOCK_WIDTH, (food->xcoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
-
 }
 
 //该函数传进来一个snake结构体的指针，把它打印在界面上

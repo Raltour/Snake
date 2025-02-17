@@ -1,4 +1,4 @@
-//蛇的初始长度设定为2
+//蛇的初始长度设定为2，朝下
 #define INITIAL_LENGTH 2
 //蛇的初始方向，直接用0、1、2、3代表四个方向
 #define INITIAL_DIRECTION 1
@@ -34,8 +34,8 @@ struct Snake {
 
 	//新建一个蛇时采用的默认构造函数
 	Snake() {
-		head = new Node(INITIAL_PLACE_X, INITIAL_PLACE_Y, nullptr);
-		end = new Node(INITIAL_PLACE_X - 1, INITIAL_PLACE_Y + 1, nullptr);
+		end = new Node(INITIAL_PLACE_X, INITIAL_PLACE_Y - 1, nullptr);
+		head = new Node(INITIAL_PLACE_X, INITIAL_PLACE_Y, end);
 		lastEnd = end;
 		head->nextNode = end;
 		length = INITIAL_LENGTH;

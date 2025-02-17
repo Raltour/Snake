@@ -32,8 +32,7 @@ void addFirst() {
 
 //去掉蛇末尾的节点
 void removeLast() {
-    if (!mySnake->end) return;
-
+    delete mySnake->lastEnd;
     mySnake->lastEnd = mySnake->end;
 
     Node* prev = mySnake->head;
@@ -41,7 +40,6 @@ void removeLast() {
         prev = prev->nextNode;
     }
 
-    delete mySnake->end;
     mySnake->end = prev;
     mySnake->end->nextNode = nullptr;
 }

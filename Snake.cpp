@@ -10,6 +10,7 @@
 
 #include "Snake.h"
 #include "Food.h"
+#include <conio.h>  // 用于检测键盘输入
 
 
 //在蛇的前端添加新的节点
@@ -36,11 +37,10 @@ void removeLast() {
         prev = prev->nextNode;
     }
 
-    mySnake->lastX = mySnake->end->x_axis;
-    mySnake->lastY = mySnake->end->y_axis;
+    mySnake->lastEnd = mySnake->end;
+    delete mySnake->end;
 
     mySnake->end = prev;
-    delete mySnake->end->nextNode;
     mySnake->end->nextNode = nullptr;
 }
 
@@ -50,7 +50,31 @@ void snakeMove() {
     addFirst();
     removeLast();
 }
+//根据键盘输入改变direction的函数
+void changeDirection(Snake* snake) {
+    if (_kbhit()) {  // 如果有键盘输入
+        char key = _getch();  // 获取键盘输入字符
 
+        switch (key) {
+        case 'w': case 'W':
+            if (snake->direction != 2)  
+                snake->direction = 0;
+            break;
+        case 'd': case 'D':
+            if (snake->direction != 3)
+                snake->direction = 1;
+            break;
+        case 's': case 'S':
+            if (snake->direction != 0)
+                snake->direction = 2;
+            break;
+        case 'a': case 'A':
+            if (snake->direction != 1)
+                snake->direction = 3;
+            break;
+        }
+    }
+}
 //检测蛇有没有死亡的函数
 bool isSnakeDead() {
     // 检测蛇头是否撞墙
@@ -72,70 +96,7 @@ bool isSnakeDead() {
     return false;
 }
 
-//让蛇左转的程序
-void snakeTurnLeft() {
-    int newX = mySnake->head->x_axis;
-    int newY = mySnake->head->y_axis;
 
-    // 根据当前方向决定新节点的位置
-    switch (mySnake->direction) {
-        case 0:
-            newX -= 1;
-            break; //向上时左转，以下同理
-        case 1:
-            newY -= 1;
-            break; // 向右
-        case 2:
-            newX += 1;
-            break; // 向下
-        case 3:
-            newY += 1;
-            break; // 向左
-    }
-
-    Node* newNode = new Node(newX, newY, mySnake->head);
-    mySnake->head = newNode;
-    mySnake->direction = (mySnake->direction + 3) % 4;
-}
-
-//让蛇右转的程序
-void snakeTurnRight() {
-    int newX = mySnake->head->x_axis;
-    int newY = mySnake->head->y_axis;
-
-    // 根据当前方向决定新节点的位置
-    switch (mySnake->direction) {
-        case 0: newX += 1; break; //向上时右转，以下同理
-        case 1: newY += 1; break; // 向右
-        case 2: newX -= 1; break; // 向下
-        case 3: newY -= 1; break; // 向左
-    }
-
-    Node* newNode = new Node(newX, newY, mySnake->head);
-    mySnake->head = newNode;
-    mySnake->direction = (mySnake->direction + 1) % 4;
-}
-
-
-#define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0)
-#include<windows.h>
-void changeDirection() {
-    int newdirection;
-
-    if (!KEY_DOWN(87))
-        newdirection = 0;
-    else if (!KEY_DOWN(68))
-        newdirection = 1;
-    else if (!KEY_DOWN(83))
-        newdirection = 2;
-    else if (!KEY_DOWN(65))
-        newdirection = 3;
-
-    if (mySnake->direction == (newdirection + 1) % 4)
-        snakeTurnLeft();
-    else if (mySnake->direction == (newdirection + 3) % 4)
-        snakeTurnRight();
-}
 
 //检测蛇头有没有吃到食物（与食物坐标重叠）
 //该函数被包含在了头文件Food.h中

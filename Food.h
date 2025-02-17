@@ -12,6 +12,5 @@ struct Food
 
 #endif // FOOD_H
 
-#include "Snake.h"
-Food* generateFood(Snake *snake);
+Food* generateFood();
 bool isFoodEaten(Food* food);

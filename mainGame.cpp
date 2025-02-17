@@ -20,11 +20,10 @@ int main() {
 	initBoard();
 
 	//食物初始化设置以及打印一帧
-	Food* myFood = generateFood(mySnake);
+	Food* myFood = generateFood();
 	refreshBoard(mySnake, myFood);//这里还没写完
 
-
-	test();//仅供测试
+	// test();//仅供测试
 
 	//进入游戏逻辑循环
 	while (true) {
@@ -36,10 +35,12 @@ int main() {
 			break;
 		}
 
-		if (isFoodEaten( myFood)) {
+		if (isFoodEaten(myFood)) {
 			mySnake->end->nextNode = mySnake->lastEnd;
 			mySnake->end = mySnake->lastEnd;
 			mySnake->length++;
+			delete myFood;
+			Food *myFood = generateFood();
 		}
 
 		refreshBoard(mySnake, myFood);

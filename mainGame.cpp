@@ -79,7 +79,7 @@ void test() {
 
 	//测试蛇能否正常移动
 	snakeMove();
-	delay(0.5);
+	// delay(0.5);
 	refreshBoard(myFood);
 	puts("4");
 	getchar();

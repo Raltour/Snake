@@ -38,9 +38,9 @@ void removeLast() {
 
     mySnake->lastX = mySnake->end->x_axis;
     mySnake->lastY = mySnake->end->y_axis;
-    delete mySnake->end;
 
     mySnake->end = prev;
+    delete mySnake->end->nextNode;
     mySnake->end->nextNode = nullptr;
 }
 

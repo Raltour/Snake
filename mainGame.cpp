@@ -59,13 +59,11 @@ void test() {
 	//初始化界面设置
 	initBoard();
 	delay(0.5);
-	getchar();
 	puts("1");
 
 	//测试能否正常打印(其实后面这些函数删掉就行，全都迁移到board.cpp文件中)
 	block(0, 0);
 	block(0, 1);
-	getchar();
 	puts("2");
 
 
@@ -78,8 +76,9 @@ void test() {
 	puts("3");
 
 
-	//测试蛇能否正常移动
+	//测试蛇能否正常移动            //以下代码有问题，在打印出4之前程序就结束了，但好像没有出现报错？不知道什么情况
 	snakeMove();
+	refreshBoard(myFood);
 	snakeMove();
 	delay(0.5);
 	snakeMove();

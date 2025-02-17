@@ -81,6 +81,7 @@ void test() {
 	refreshBoard(myFood);
 	snakeMove();
 	delay(0.5);
+	refreshBoard(myFood);
 	snakeMove();
 	delay(0.5);
 	refreshBoard(myFood);
@@ -91,10 +92,13 @@ void test() {
 	//测试蛇能否转弯
 	snakeTurnLeft();
 	delay(0.5);
+	refreshBoard(myFood);
 	snakeMove();
 	delay(0.5);
+	refreshBoard(myFood);
 	snakeMove();
 	delay(0.5);
+	refreshBoard(myFood);
 	snakeMove();
 	delay(0.5);
 	refreshBoard(myFood);

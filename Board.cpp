@@ -24,6 +24,14 @@ void initBoard() {
 	setlinestyle(PS_DASH, 3);
 }
 
+void updateBoard() {
+	setbkcolor(RGB(35, 206, 250));
+	cleardevice();//背景
+	setfillcolor(RGB(240, 255, 240));
+	setlinecolor(RGB(240, 255, 240));
+	setlinestyle(PS_DASH, 3);
+}
+
 //该函数传进来一个food结构体的指针，把它打印在界面上
 void drawFood(Food* food) {
 	setfillcolor(RGB(255, 20, 147));
@@ -46,6 +54,7 @@ void drawSnake() {
 
 //main函数中调用该函数，游戏刷新新的一帧
 void refreshBoard(Food* food) {
+	updateBoard();
 	drawSnake();
 	drawFood(food);
 }

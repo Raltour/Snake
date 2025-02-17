@@ -8,7 +8,9 @@
 
 void block(int xcoord, int ycoord) {
 	setfillcolor(RGB(0, 255, 0));
-	solidroundrect(xcoord * BLOCK_WIDTH + 1, (ycoord + 1) * BLOCK_WIDTH + 1, (xcoord + 1) * BLOCK_WIDTH, (ycoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
+	solidroundrect(xcoord * BLOCK_WIDTH + 1, ycoord * BLOCK_WIDTH + 1,
+		(xcoord + 1) * BLOCK_WIDTH, (ycoord + 1) * BLOCK_WIDTH,
+		ROUND, ROUND);
 }
 
 
@@ -27,7 +29,9 @@ void drawFood(Food* food) {
 	setfillcolor(RGB(255, 20, 147));
 	setlinecolor(RGB(240, 255, 240));
 	setlinestyle(PS_DASH, 3);
-	fillroundrect(food->xcoord * BLOCK_WIDTH + 1, (food->ycoord + 1) * BLOCK_WIDTH + 1, (food->xcoord + 1) * BLOCK_WIDTH, (food->xcoord + 2) * BLOCK_WIDTH, ROUND, ROUND);
+	fillroundrect(food->xcoord * BLOCK_WIDTH + 1, food->ycoord * BLOCK_WIDTH + 1,
+		(food->xcoord + 1) * BLOCK_WIDTH, (food->ycoord + 1) * BLOCK_WIDTH,
+		ROUND, ROUND);
 }
 
 //该函数传进来一个snake结构体的指针，把它打印在界面上

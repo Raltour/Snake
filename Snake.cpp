@@ -52,26 +52,26 @@ void snakeMove() {
     removeLast();
 }
 //根据键盘输入改变direction的函数
-void changeDirection(Snake* snake) {
+void changeDirection() {
     if (_kbhit()) {  // 如果有键盘输入
         char key = _getch();  // 获取键盘输入字符
 
         switch (key) {
         case 'w': case 'W':
-            if (snake->direction != 2)  
-                snake->direction = 0;
+            if (mySnake->direction != 2)
+                mySnake->direction = 0;
             break;
         case 'd': case 'D':
-            if (snake->direction != 3)
-                snake->direction = 1;
+            if (mySnake->direction != 3)
+                mySnake->direction = 1;
             break;
         case 's': case 'S':
-            if (snake->direction != 0)
-                snake->direction = 2;
+            if (mySnake->direction != 0)
+                mySnake->direction = 2;
             break;
         case 'a': case 'A':
-            if (snake->direction != 1)
-                snake->direction = 3;
+            if (mySnake->direction != 1)
+                mySnake->direction = 3;
             break;
         }
     }

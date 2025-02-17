@@ -15,40 +15,39 @@ extern Snake *mySnake = new Snake();
 
 
 int main() {
-	test();//仅供测试
+	//test();//仅供测试
 
 
 
-	// //初始化界面设置
-	// initBoard();
- //
-	// //食物初始化设置以及打印一帧
-	// Food* myFood = generateFood();
-	// refreshBoard(myFood);
-	//
-	// //进入游戏逻辑循环
-	// while (true) {
- //        // changeDirection();
- //
-	// 	snakeMove();
- //
-	// 	if (isSnakeDead()) {
-	// 		break;
-	// 	}
- //
-	// 	if (isFoodEaten(myFood)) {
-	// 		mySnake->end->nextNode = mySnake->lastEnd;
-	// 		mySnake->end = mySnake->lastEnd;
-	// 		mySnake->length++;
-	// 		delete myFood;
-	// 		Food *myFood = generateFood();
-	// 	}
- //
-	// 	refreshBoard(myFood);
-	// 	delay(0.5);
-	// }
- //
-	// closegraph();
+	//初始化界面设置
+	initBoard();
+
+	//食物初始化设置以及打印一帧
+	Food* myFood = generateFood();
+	refreshBoard(myFood);
+
+	//进入游戏逻辑循环
+	while (true) {
+        changeDirection();
+
+		snakeMove();
+
+		if (isSnakeDead()) {
+			break;
+		}
+
+		if (isFoodEaten(myFood)) {
+			mySnake->end->nextNode = new Node(mySnake->lastX, mySnake->lastY, nullptr);
+			mySnake->length++;
+			delete myFood;
+			Food *myFood = generateFood();
+		}
+
+		refreshBoard(myFood);
+		delay(0.5);
+	}
+
+	closegraph();
 
 	return  0;
 }
@@ -106,7 +105,7 @@ void test() {
 
 
 	//测试蛇能否转弯
-	snakeTurnLeft();
+	//snakeTurnLeft();
 	delay(0.5);
 	refreshBoard(myFood);
 	snakeMove();
@@ -122,7 +121,7 @@ void test() {
 	puts("6");
 
 
-	snakeTurnRight();
+	//snakeTurnRight();
 	delay(0.5);
 	snakeMove();
 	delay(0.5);

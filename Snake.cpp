@@ -31,13 +31,13 @@ void addFirst() {
 
 //去掉蛇末尾的节点
 void removeLast() {
-    delete mySnake->lastEnd;
-    mySnake->lastEnd = mySnake->end;
-
     Node* prev = mySnake->head;
     while (prev->nextNode && prev->nextNode != mySnake->end) {
         prev = prev->nextNode;
     }
+
+    mySnake->lastEnd = mySnake->end;
+    delete mySnake->end;
 
     mySnake->end = prev;
     mySnake->end->nextNode = nullptr;

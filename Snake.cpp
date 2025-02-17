@@ -1,72 +1,93 @@
 /*
-* ���ļ�������
-*snake�Ľṹ��
-*���ƶ��ĺ���
-*�����û�������ĺ���
-*�������ƶ��ٶȵĺ���
-*�Ե�ʳ���ӳ��ĺ��� 
-* ����������������������ͷ�����ӽڵ㡢����β��ɾ���ڵ�
-* 
+* 本文件包含：
+*snake的结构体
+*蛇移动的函数
+*检测有没有死亡的函数
+*调整蛇移动速度的函数
+*吃到食物延长的函数
+* 几个辅助函数，作用链表头部增加节点、链表尾部删除节点
 */
 
 #include "Snake.h"
-#include "Block.h"
 #include "Food.h"
+#include <conio.h>  // 用于检测键盘输入
 
 
-//���ߵ�ǰ�������µĽڵ�
-void addFirst(Snake& snake) {
-    int newX = snake.head->x_axis;
-    int newY = snake.head->y_axis;
+//在蛇的前端添加新的节点
+void addFirst() {
+    int newX = mySnake->head->x_axis;
+    int newY = mySnake->head->y_axis;
 
-    // ���ݵ�ǰ��������½ڵ��λ��
-    switch (snake.direction) {
-    case 0: newY -= 1; break; // ����
-    case 1: newX += 1; break; // ����
-    case 2: newY += 1; break; // ����
-    case 3: newX -= 1; break; // ����
+    // 根据当前方向决定新节点的位置
+    switch (mySnake->direction) {
+    case 0: newY -= 1; break; // 向上
+    case 1: newX += 1; break; // 向右
+    case 2: newY += 1; break; // 向下
+    case 3: newX -= 1; break; // 向左
     }
 
-    Node* newNode = new Node(newX, newY, snake.head);
-    snake.head = newNode;
-    snake.length++;
+    Node* newNode = new Node(newX, newY, mySnake->head);
+    mySnake->head = newNode;
 }
 
-//ȥ����ĩβ�Ľڵ�
-void removeLast(Snake& snake) {
-    if (!snake.end) return;
-
-    Node* prev = snake.head;
-    while (prev->nextNode && prev->nextNode != snake.end) {
+//去掉蛇末尾的节点
+void removeLast() {
+    Node* prev = mySnake->head;
+    while (prev->nextNode && prev->nextNode != mySnake->end) {
         prev = prev->nextNode;
     }
 
-    delete snake.end;
-    snake.end = prev;
-    snake.end->nextNode = nullptr;
-    snake.length--;
+    mySnake->lastEnd = mySnake->end;
+    delete mySnake->end;
+
+    mySnake->end = prev;
+    mySnake->end->nextNode = nullptr;
 }
 
-//��������ǰ�ƶ��ĺ���
-//��addFirst��removeLast���������
-void snakeMove(Snake* snake) {
-    addFirst(*snake);
-    removeLast(*snake);
+//控制蛇向前移动的函数
+//将addFirst和removeLast结合起来用
+void snakeMove() {
+    addFirst();
+    removeLast();
 }
+//根据键盘输入改变direction的函数
+void changeDirection(Snake* snake) {
+    if (_kbhit()) {  // 如果有键盘输入
+        char key = _getch();  // 获取键盘输入字符
 
-//�������û�������ĺ���
-bool isSnakeDead(Snake* snake) {
-    // �����ͷ�Ƿ�ײǽ
-    if (snake->head->x_axis < 0 || snake->head->x_axis > 30 ||
-        snake->head->y_axis < 0 || snake->head->y_axis > 30) {
+        switch (key) {
+        case 'w': case 'W':
+            if (snake->direction != 2)  
+                snake->direction = 0;
+            break;
+        case 'd': case 'D':
+            if (snake->direction != 3)
+                snake->direction = 1;
+            break;
+        case 's': case 'S':
+            if (snake->direction != 0)
+                snake->direction = 2;
+            break;
+        case 'a': case 'A':
+            if (snake->direction != 1)
+                snake->direction = 3;
+            break;
+        }
+    }
+}
+//检测蛇有没有死亡的函数
+bool isSnakeDead() {
+    // 检测蛇头是否撞墙
+    if (mySnake->head->x_axis < 0 || mySnake->head->x_axis > 30 ||
+        mySnake->head->y_axis < 0 || mySnake->head->y_axis > 30) {
         return true;
     }
 
-    // �����ͷ�Ƿ�ײ���Լ�
-    Node* current = snake->head->nextNode;
+    // 检测蛇头是否撞到自己
+    Node* current = mySnake->head->nextNode;
     while (current) {
-        if (current->x_axis == snake->head->x_axis &&
-            current->y_axis == snake->head->y_axis) {
+        if (current->x_axis == mySnake->head->x_axis &&
+            current->y_axis == mySnake->head->y_axis) {
             return true;
         }
         current = current->nextNode;
@@ -75,25 +96,13 @@ bool isSnakeDead(Snake* snake) {
     return false;
 }
 
-//���߼��ٵĳ���
-void accelerateSnake(Snake *snake) {
-	snake->speed++;
-}
 
-//������ת�ĳ���
-void snakeTurnLeft(Snake* snake) {
 
-}
-
-//������ת�ĳ���
-void snakeTurnRight(Snake* snake) {
-	
-}
-
-//�����ͷ��û�гԵ�ʳ���ʳ�������ص���
-bool isFoodEaten(Snake* snake, Food* food)
+//检测蛇头有没有吃到食物（与食物坐标重叠）
+//该函数被包含在了头文件Food.h中
+bool isFoodEaten(Food* food)
 {
-    if (snake->head->x_axis == food->xcoord && snake->head->y_axis == food->ycoord)
+    if (mySnake->head->x_axis == food->xcoord && mySnake->head->y_axis == food->ycoord)
     {
         return true;
     }

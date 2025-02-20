@@ -42,5 +42,3 @@ extern Snake* mySnake;
 void snakeMove();
 bool isSnakeDead();
 void changeDirection();
-void snakeTurnLeft();//测试，以后删掉
-void snakeTurnRight();//测试，以后删掉

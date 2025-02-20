@@ -42,7 +42,7 @@ void drawFood(Food* food) {
 		ROUND, ROUND);
 }
 
-//该函数传进来一个snake结构体的指针，把它打印在界面上
+//snake结构体，把它打印在界面上
 void drawSnake() {
 	Node* current = mySnake->head;
 	while (current != nullptr) {

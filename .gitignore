@@ -1,11 +1,1 @@
-Snake/
-x64/
 cmake-build-debug/
-.idea/
-EasyX/
-.vs/
-Snake.vcxproj*
-Snake.sln
-*.xml
-*.iml
-*.vcxproj

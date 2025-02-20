@@ -1,73 +1,58 @@
-#Snake
-
-规则：
+# Snake 贪吃蛇
+***
+## 规则：
 吃食物增加身体长度  
 撞墙或者撞到身体死亡
-
-
-对象：蛇、食物、方块、坐标、背景
-
-
-游戏逻辑功能：  
+***
+## 对象：蛇、食物、图形
+***
+## 逻辑功能：  
 按键操控方向  
 蛇的移动  
 吃食物、增长  
 随机刷新食物  
 撞墙死亡  
-撞到身体死亡  
-计分(最终长度）  
-增加速度
-
-
-显示模块  
+撞到身体死亡
+***
+## 显示模块  
 功能：刷新界面  
 传参：蛇、食物、基本背景信息  
 每次界面变动后立刻刷新一帧
-
-蛇的实现？：  
-链表（双端？）尾部多一个节点  
-节点：横坐标、纵坐标、下一个节点  
-蛇：head、end、length、lastEnd、direction、speed
-
-怎么让食物出现在没有蛇的地方？  
-
-为了保证蛇吃掉食物后正常增长，在蛇的结构体内添加一个虚节点，记录尾部上一时刻的位置
-
-
-main函数伪代码：
+***
+## 蛇的实现：
+为了便于传参，采取带有外部链接的静态变量（全局变量）  
+采用链表进行实现，每次移动时，只需要头部增加新节点，尾部删去旧节点  
+为了保证蛇吃掉食物后正常增长，在蛇的结构体内记录尾部上一时刻的位置
+***
+## main函数伪代码：
 
     int main(void) {
-    
-        Init {
-            printBoard
-            Create new snake
-            Genetate new food
-            Score = 0
-        }
+
+        initBoard
+        genetate new food
+        refresh
+
         while {
-            if (getKey(检测输入) {
-                Change(snake.direction)
-            }
+            changeDirection
+
             Snake.move
+
             if (dead) {
-                Gameover
                 break
             }
+
             if（eat food) {
-                Length++
-                Generate new food
+                end = new_end
+                length++
+                generate new_food
             }
-            showBoard(刷新一帧）、
-            if (length > someNumber) {
-                accelerate
-            }
-            time.pause
-        }
-            delete snake
-            Show score
-            return 0
+
+            showBoard(刷新一帧）
+
+            time_pause
+        } 
+        
+        closegraph
+
+        return 0
     }
-
-
-
-

@@ -17,8 +17,6 @@ extern Snake *mySnake = new Snake();
 int main() {
 	//test();//仅供测试
 
-
-
 	//初始化界面设置
 	initBoard();
 
@@ -38,13 +36,14 @@ int main() {
 
 		if (isFoodEaten(myFood)) {
 			mySnake->end->nextNode = new Node(mySnake->lastX, mySnake->lastY, nullptr);
+			mySnake->end = mySnake->end->nextNode;
 			mySnake->length++;
 			delete myFood;
 			Food *myFood = generateFood();
 		}
 
 		refreshBoard(myFood);
-		delay(0.5);
+		delay(0.2);
 	}
 
 	closegraph();

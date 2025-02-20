@@ -45,11 +45,10 @@ void drawFood(Food* food) {
 //该函数传进来一个snake结构体的指针，把它打印在界面上
 void drawSnake() {
 	Node* current = mySnake->head;
-	while (current->nextNode != NULL) {
-		block(current->x_axis, current->x_axis);
+	while (current != nullptr) {
+		block(current->x_axis, current->y_axis);
 		current = current->nextNode;
 	}
-	block(current->x_axis, current->y_axis);
 }
 
 //main函数中调用该函数，游戏刷新新的一帧

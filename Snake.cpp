@@ -20,29 +20,35 @@ void addFirst() {
 
     // 根据当前方向决定新节点的位置
     switch (mySnake->direction) {
-    case 0: newY -= 1; break; // 向上
-    case 1: newX += 1; break; // 向右
-    case 2: newY += 1; break; // 向下
-    case 3: newX -= 1; break; // 向左
+        case 0: newY -= 1; break; // 向上
+        case 1: newX += 1; break; // 向右
+        case 2: newY += 1; break; // 向下
+        case 3: newX -= 1; break; // 向左
     }
 
+    // 创建新节点
     Node* newNode = new Node(newX, newY, mySnake->head);
+
+    // 更新蛇头，newNode 成为新的头节点
     mySnake->head = newNode;
 }
 
 //去掉蛇末尾的节点
 void removeLast() {
+    // 找到倒数第二个节点
     Node* prev = mySnake->head;
     while (prev->nextNode && prev->nextNode != mySnake->end) {
         prev = prev->nextNode;
     }
 
+    // 保存尾部坐标
     mySnake->lastX = mySnake->end->x_axis;
     mySnake->lastY = mySnake->end->y_axis;
 
+    // 更新尾节点指向倒数第二个节点
     mySnake->end = prev;
-    delete mySnake->end->nextNode;
-    mySnake->end->nextNode = nullptr;
+    delete mySnake->end->nextNode;  // 删除原尾节点
+    mySnake->end->nextNode = nullptr;  // 确保尾部指针为空
 }
 
 //控制蛇向前移动的函数
